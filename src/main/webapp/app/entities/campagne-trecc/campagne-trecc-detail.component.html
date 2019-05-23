@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="campagne">
+            <h2><span>Campagne</span> {{campagne.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Campagne</span></dt>
+                <dd>
+                    <span>{{campagne.idCampagne}}</span>
+                </dd>
+                <dt><span>Statut</span></dt>
+                <dd>
+                    <span>{{campagne.statut}}</span>
+                </dd>
+                <dt><span>Fichier</span></dt>
+                <dd>
+                    <span>{{campagne.fichier}}</span>
+                </dd>
+                <dt><span>Date Debut</span></dt>
+                <dd>
+                    <span>{{campagne.dateDebut}}</span>
+                </dd>
+                <dt><span>Date Fin</span></dt>
+                <dd>
+                    <span>{{campagne.dateFin}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/campagne-trecc', campagne.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

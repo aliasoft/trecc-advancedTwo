@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span>Traces</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-trace-trecc" [routerLink]="['/trace-trecc/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Trace
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="traces">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="idTrace"><span>Id Trace</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="typeCourrier"><span>Type Courrier</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="timestampProcess"><span>Timestamp Process</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="idCpr"><span>Id Cpr</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nir"><span>Nir</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adresseEntrante"><span>Adresse Entrante</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="adresseEnrichie"><span>Adresse Enrichie</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="erreur"><span>Erreur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fkCourrier.id"><span>Fk Courrier</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let trace of traces ;trackBy: trackId">
+                <td><a [routerLink]="['/trace-trecc', trace.id, 'view' ]">{{trace.id}}</a></td>
+                <td>{{trace.idTrace}}</td>
+                <td>{{trace.typeCourrier}}</td>
+                <td>{{trace.timestampProcess | date:'medium'}}</td>
+                <td>{{trace.idCpr}}</td>
+                <td>{{trace.nir}}</td>
+                <td>{{trace.adresseEntrante}}</td>
+                <td>{{trace.adresseEnrichie}}</td>
+                <td>{{trace.email}}</td>
+                <td>{{trace.erreur}}</td>
+                <td>
+                    <div *ngIf="trace.fkCourrier">
+                        <a [routerLink]="['../courrier-trecc', trace.fkCourrier?.id, 'view' ]" >{{trace.fkCourrier?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/trace-trecc', trace.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/trace-trecc', trace.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'trace-trecc', { outlets: { popup: trace.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="traces && traces.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

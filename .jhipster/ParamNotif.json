@@ -1,0 +1,33 @@
+{
+    "name": "ParamNotif",
+    "fields": [
+        {
+            "fieldName": "maxEnvoi",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "envoiEnCours",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "debutHoraire",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "finHoraire",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190523094858",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "param_notif",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "trecc"
+}

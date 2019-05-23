@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="trace">
+            <h2><span>Trace</span> {{trace.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Trace</span></dt>
+                <dd>
+                    <span>{{trace.idTrace}}</span>
+                </dd>
+                <dt><span>Type Courrier</span></dt>
+                <dd>
+                    <span>{{trace.typeCourrier}}</span>
+                </dd>
+                <dt><span>Timestamp Process</span></dt>
+                <dd>
+                    <span>{{trace.timestampProcess}}</span>
+                </dd>
+                <dt><span>Id Cpr</span></dt>
+                <dd>
+                    <span>{{trace.idCpr}}</span>
+                </dd>
+                <dt><span>Nir</span></dt>
+                <dd>
+                    <span>{{trace.nir}}</span>
+                </dd>
+                <dt><span>Adresse Entrante</span></dt>
+                <dd>
+                    <span>{{trace.adresseEntrante}}</span>
+                </dd>
+                <dt><span>Adresse Enrichie</span></dt>
+                <dd>
+                    <span>{{trace.adresseEnrichie}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{trace.email}}</span>
+                </dd>
+                <dt><span>Erreur</span></dt>
+                <dd>
+                    <span>{{trace.erreur}}</span>
+                </dd>
+                <dt><span>Fk Courrier</span></dt>
+                <dd>
+                    <div *ngIf="trace.fkCourrier">
+                        <a [routerLink]="['/courrier-trecc', trace.fkCourrier?.id, 'view']">{{trace.fkCourrier?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/trace-trecc', trace.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

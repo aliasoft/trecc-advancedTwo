@@ -1,0 +1,33 @@
+{
+    "name": "TypeDoc",
+    "fields": [
+        {
+            "fieldName": "typeDoc",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nomCourrier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomEp",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190523094901",
+    "javadoc": "Task entity.\n@author The JHipster team.",
+    "entityTableName": "type_doc",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "trecc"
+}

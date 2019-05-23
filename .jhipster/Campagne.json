@@ -1,0 +1,36 @@
+{
+    "name": "Campagne",
+    "fields": [
+        {
+            "fieldName": "idCampagne",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "statut",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fichier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190523094856",
+    "entityTableName": "campagne",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "trecc"
+}
