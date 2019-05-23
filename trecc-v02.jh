@@ -1,0 +1,90 @@
+entity Campagne {
+    idCampagne Long,
+    statut String,
+    fichier String,
+    dateDebut Instant,
+    dateFin Instant
+}
+
+entity Courrier {
+	 idCourrier Long,
+     demandeEnvoi Instant,
+     dateEnvoi Instant,
+     idCpr Long,
+     nir String,
+     typeCourrier String,
+     modele String,
+     statutGED String,
+     statutEnvoiCourrier String 
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity ParamNotif {
+	maxEnvoi Long,
+    envoiEnCours Long,
+    debutHoraire Instant,
+    finHoraire Instant 
+}
+
+entity Trace {
+	  idTrace Long,
+      typeCourrier String,
+      timestampProcess Instant,
+      idCpr Long,
+      nir String,
+      adresseEntrante String,
+      adresseEnrichie String,
+      email String,
+      erreur String
+}
+
+
+entity Notification {
+	  idTrace Long,
+      typeCourrier String,
+      timestampProcess Instant,
+      idCpr Long,
+      nir String,
+      adresseEntrante String,
+      adresseEnrichie String,
+      email String,
+      erreur String
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity TypeDoc {
+	typeDoc Long,
+    nomCourrier String,
+    nomEmail String,
+    nomEp String
+
+}
+relationship ManyToOne {
+	Trace{fkCourrier} to Courrier
+}
+
+relationship ManyToOne {
+	Notification{fkCourrier} to Courrier
+}
+
+relationship ManyToOne {
+	Courrier{fkCampagne} to Campagne
+}
+
+
+// Set pagination options
+paginate Campagne with infinite-scroll
+paginate Courrier, Trace with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except ParamNotif, TypeDoc
+
+// Set an angular suffix
+angularSuffix * with trecc
