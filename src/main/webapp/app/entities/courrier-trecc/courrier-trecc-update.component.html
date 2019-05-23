@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-courrier-trecc-heading">Create or edit a Courrier</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!courrier.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idCourrier">Id Courrier</label>
+                    <input type="number" class="form-control" name="idCourrier" id="field_idCourrier"
+                           formControlName="idCourrier"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_demandeEnvoi">Demande Envoi</label>
+                    <div class="d-flex">
+                        <input id="field_demandeEnvoi" type="datetime-local" class="form-control" name="demandeEnvoi" formControlName="demandeEnvoi" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateEnvoi">Date Envoi</label>
+                    <div class="d-flex">
+                        <input id="field_dateEnvoi" type="datetime-local" class="form-control" name="dateEnvoi" formControlName="dateEnvoi" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idCpr">Id Cpr</label>
+                    <input type="number" class="form-control" name="idCpr" id="field_idCpr"
+                           formControlName="idCpr"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nir">Nir</label>
+                    <input type="text" class="form-control" name="nir" id="field_nir"
+                           formControlName="nir"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeCourrier">Type Courrier</label>
+                    <input type="text" class="form-control" name="typeCourrier" id="field_typeCourrier"
+                           formControlName="typeCourrier"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modele">Modele</label>
+                    <input type="text" class="form-control" name="modele" id="field_modele"
+                           formControlName="modele"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_statutGED">Statut GED</label>
+                    <input type="text" class="form-control" name="statutGED" id="field_statutGED"
+                           formControlName="statutGED"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_statutEnvoiCourrier">Statut Envoi Courrier</label>
+                    <input type="text" class="form-control" name="statutEnvoiCourrier" id="field_statutEnvoiCourrier"
+                           formControlName="statutEnvoiCourrier"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fkCampagne">Fk Campagne</label>
+                    <select class="form-control" id="field_fkCampagne" name="fkCampagne" formControlName="fkCampagne">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="campagneOption.id === editForm.get('fkCampagne').value?.id ? editForm.get('fkCampagne').value : campagneOption" *ngFor="let campagneOption of campagnes; trackBy: trackCampagneById">{{campagneOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="notification">
+            <h2><span>Notification</span> {{notification.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Trace</span></dt>
+                <dd>
+                    <span>{{notification.idTrace}}</span>
+                </dd>
+                <dt><span>Type Courrier</span></dt>
+                <dd>
+                    <span>{{notification.typeCourrier}}</span>
+                </dd>
+                <dt><span>Timestamp Process</span></dt>
+                <dd>
+                    <span>{{notification.timestampProcess}}</span>
+                </dd>
+                <dt><span>Id Cpr</span></dt>
+                <dd>
+                    <span>{{notification.idCpr}}</span>
+                </dd>
+                <dt><span>Nir</span></dt>
+                <dd>
+                    <span>{{notification.nir}}</span>
+                </dd>
+                <dt><span>Adresse Entrante</span></dt>
+                <dd>
+                    <span>{{notification.adresseEntrante}}</span>
+                </dd>
+                <dt><span>Adresse Enrichie</span></dt>
+                <dd>
+                    <span>{{notification.adresseEnrichie}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{notification.email}}</span>
+                </dd>
+                <dt><span>Erreur</span></dt>
+                <dd>
+                    <span>{{notification.erreur}}</span>
+                </dd>
+                <dt><span>Fk Courrier</span></dt>
+                <dd>
+                    <div *ngIf="notification.fkCourrier">
+                        <a [routerLink]="['/courrier-trecc', notification.fkCourrier?.id, 'view']">{{notification.fkCourrier?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/notification-trecc', notification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

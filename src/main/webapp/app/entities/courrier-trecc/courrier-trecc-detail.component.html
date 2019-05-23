@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="courrier">
+            <h2><span>Courrier</span> {{courrier.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Courrier</span></dt>
+                <dd>
+                    <span>{{courrier.idCourrier}}</span>
+                </dd>
+                <dt><span>Demande Envoi</span></dt>
+                <dd>
+                    <span>{{courrier.demandeEnvoi}}</span>
+                </dd>
+                <dt><span>Date Envoi</span></dt>
+                <dd>
+                    <span>{{courrier.dateEnvoi}}</span>
+                </dd>
+                <dt><span>Id Cpr</span></dt>
+                <dd>
+                    <span>{{courrier.idCpr}}</span>
+                </dd>
+                <dt><span>Nir</span></dt>
+                <dd>
+                    <span>{{courrier.nir}}</span>
+                </dd>
+                <dt><span>Type Courrier</span></dt>
+                <dd>
+                    <span>{{courrier.typeCourrier}}</span>
+                </dd>
+                <dt><span>Modele</span></dt>
+                <dd>
+                    <span>{{courrier.modele}}</span>
+                </dd>
+                <dt><span>Statut GED</span></dt>
+                <dd>
+                    <span>{{courrier.statutGED}}</span>
+                </dd>
+                <dt><span>Statut Envoi Courrier</span></dt>
+                <dd>
+                    <span>{{courrier.statutEnvoiCourrier}}</span>
+                </dd>
+                <dt><span>Fk Campagne</span></dt>
+                <dd>
+                    <div *ngIf="courrier.fkCampagne">
+                        <a [routerLink]="['/campagne-trecc', courrier.fkCampagne?.id, 'view']">{{courrier.fkCampagne?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/courrier-trecc', courrier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

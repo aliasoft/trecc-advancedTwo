@@ -1,0 +1,60 @@
+{
+    "name": "Notification",
+    "fields": [
+        {
+            "fieldName": "idTrace",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "typeCourrier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timestampProcess",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "idCpr",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nir",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresseEntrante",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresseEnrichie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "erreur",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "courrier",
+            "otherEntityRelationshipName": "notification",
+            "relationshipName": "fkCourrier",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190523094900",
+    "entityTableName": "notification",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "trecc"
+}
